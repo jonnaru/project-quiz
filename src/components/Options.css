@@ -1,0 +1,75 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+
+form {
+  margin: 20px;
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.correct-answer:disabled {
+  background: green;
+}
+
+.wrong-answer:disabled {
+  background: red;
+}
+
+/* styling for radio buttons */
+
+/* STYLING OF THE LABEL */
+input[type="radio"] + .options-label {
+  width: 350px;
+  display: block;
+  position: relative;
+  font-family: "Roboto", Sans-Serif;
+  font-size: 16px;
+  color: #62626b;
+  background-color: #ffffff;
+  box-shadow: 10px 10px 14px -9px rgba(166, 153, 166, 1);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* IF DISABLED */
+input[type="radio"]:disabled + .options-label {
+  opacity: 0.5;
+}
+
+input[type="radio"] + .options-label:hover {
+  background-color: #dbf6e9;
+}
+
+input[type="radio"]:checked + .options-label {
+  background-color: #9ddfd3;
+  color: #ffffff;
+}
+
+/* IF ANSWER IS FALSE*/
+input[type="radio"]:checked + .false:disabled {
+  color: #ff425e;
+}
+
+/* IF ANSWER IS TRUE*/
+input[type="radio"]:checked + .true:disabled {
+  color: #49b675;
+}
+
+input[type="radio"]:focus + .options-label {
+  outline: #31326f solid 1px;
+}
+
+/* HIDING THE RADIO BUTTON */
+input[type="radio"] {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+}
