@@ -7,15 +7,5 @@ import { Summary } from "./Summary";
 export const Quiz = () => {
   const quizOver = useSelector((state) => state.quiz.quizOver);
 
-  return (
-    <>
-      {quizOver ? (
-        <Summary />
-      ) : (
-        <>
-          <CurrentQuestion />
-        </>
-      )}
-    </>
-  );
+  return quizOver ? <Summary /> : <CurrentQuestion />;
 };
