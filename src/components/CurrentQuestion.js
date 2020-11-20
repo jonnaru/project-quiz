@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 
 import { quiz } from "reducers/quiz";
@@ -10,44 +10,73 @@ import { Options } from "./Options";
 const QuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
 `;
 const QuestionButton = styled.button`
   width: 150px;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #9ddfd3;
-  border: none;
-  box-shadow: 10px 10px 14px -9px rgba(166, 153, 166, 1);
-  border-radius: 8px;
   margin-bottom: 15px;
-  padding: 15px 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 50px;
+  transition: 0.2s;
+  border: none;
   cursor: pointer;
-  transition: 0.4s;
 
   &:hover {
-    background-color: #dbf6e9;
+    background-color: #262626;
+    color: #fff;
   }
 
-  &:focus {
-    background-color: #ffffff;
-    color: #62626b;
-    outline: #31326f solid 1px;
-  }
+  /* &:focus {
+    background-color: #fff;
+    color: #262626;
+    outline: #fff solid 1px;
+  } */
 
   &:disabled {
     opacity: 0.4;
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
   }
 `;
 
 const TextNumber = styled.p`
   font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 0;
+`;
+
+const HeadingContainer = styled.div`
+  height: 200px;
 `;
 const Heading = styled.h1`
   text-align: center;
-  width: 80%;
+  margin: 60px auto 30px auto;
+  font-size: 40px;
+  width: 60%;
+`;
+
+const pulse = keyframes`
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+`;
+
+const Image = styled.img`
+  animation-name: ${pulse};
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
 `;
 
 // *** QurrentQuestion ***
@@ -75,12 +104,15 @@ export const CurrentQuestion = () => {
   console.log(question.image);
   return (
     <QuestionContainer>
-      <Heading>{question.questionText}</Heading>
-      <img src={question.image} alt={question.alt} />
+      <HeadingContainer>
+        <Heading>{question.questionText}</Heading>
+      </HeadingContainer>
+      <Image src={question.image} alt={question.alt} />
       <TextNumber>
         Question {questionNumber} of {questionTotal}
       </TextNumber>
       <Options />
+
       <QuestionButton
         disabled={answer === undefined}
         onClick={() => dispatch(quiz.actions.goToNextQuestion())}

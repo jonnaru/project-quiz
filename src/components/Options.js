@@ -3,45 +3,36 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 
 import { quiz } from "reducers/quiz";
-// import "./Options.css";
 
 //  *** Styled components ***
 
 const FormContainer = styled.form`
   margin: 20px;
+  width: 650px;
+  display: flex;
+  justify-content: space-evenly;
 `;
 
 const AnswerContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-// hiding the radio button
-const Input = styled.input`
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px);
 `;
 
 const OptionsLabel = styled.label`
-  width: 350px;
-  display: block;
-  position: relative;
+  text-align: center;
+  width: 120px;
+  margin-bottom: 15px;
+  padding: 10px;
   font-family: "Roboto", Sans-Serif;
   font-size: 16px;
   color: #000;
-  /* box-shadow: 10px 10px 14px -9px rgba(166, 153, 166, 1); */
-  border-radius: 8px;
-  margin-bottom: 15px;
-  padding: 15px 15px;
-  cursor: pointer;
-  transition: 0.5s;
+  border-radius: 50px;
+  transition: 0.2s;
+  cursor: ${(props) => (props.disabled ? "arrow" : "pointer")};
 
   &:hover {
-    background-color: #dbf6e9;
+    background-color: ${(props) =>
+      props.disabled ? "rgba(255, 255, 255, 0.4)" : "#262626"};
+    color: ${(props) => (props.disabled ? "#000" : "#fff")};
   }
 
   /* background: ${(props) =>
@@ -61,6 +52,15 @@ const OptionsLabel = styled.label`
   }};
 `;
 
+// hiding the radio button
+const Input = styled.input`
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+`;
+
 // *** Options ***
 
 export const Options = () => {
@@ -77,9 +77,6 @@ export const Options = () => {
   if (!question) {
     return <h1>Oh no! I could not find the current answers!</h1>;
   }
-
-  console.log(answer?.answerIndex ?? "hej");
-  console.log(answer?.index ?? "hej");
 
   return (
     <FormContainer>

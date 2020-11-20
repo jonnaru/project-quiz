@@ -15,32 +15,29 @@ const SummaryContainer = styled.div`
 `;
 
 const SummaryParagraph = styled.p`
-  font-size: 32px;
   text-align: center;
+  font-size: 36px;
   width: 80%;
 `;
 
 const SummaryButton = styled.button`
-  width: 200px;
-  font-size: 16px;
-  color: #ffffff;
-  background-color: #9ddfd3;
-  border: none;
-  box-shadow: 10px 10px 14px -9px rgba(166, 153, 166, 1);
-  border-radius: 8px;
+  width: 150px;
   margin-bottom: 15px;
-  padding: 15px 15px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 50px;
+  transition: 0.2s;
+  border: none;
   cursor: pointer;
-  transition: 0.5s;
 
   &:hover {
-    background-color: #dbf6e9;
-  }
+    background-color: #262626;
+    color: #fff;
 
   &:focus {
-    background-color: #ffffff;
-    color: #62626b;
-    outline: #31326f solid 1px;
+    outline: #fff solid 1px;
   }
 `;
 
@@ -53,12 +50,17 @@ export const Summary = () => {
   const numCorrectAnswers = answers.filter((answer) => answer.isCorrect).length;
   const numAnswers = answers.length;
 
+  const getSummeryText = () => {
+    if (numCorrectAnswers === numAnswers) return "You got the highest score 🤩";
+    if (numCorrectAnswers >= numAnswers / 2) {
+      return `You got ${numCorrectAnswers} of ${numAnswers}... that's alright 😁`;
+    }
+    return `You got ${numCorrectAnswers} of ${numAnswers}. Go back to school 🙄`;
+  };
+
   return (
     <SummaryContainer>
-      <SummaryParagraph>
-        Congratulations! You got {numCorrectAnswers} right answers out of{" "}
-        {numAnswers} 🌍
-      </SummaryParagraph>
+      <SummaryParagraph>{getSummeryText()}</SummaryParagraph>
       <SummaryButton onClick={() => dispatch(quiz.actions.restart())}>
         Restart
       </SummaryButton>

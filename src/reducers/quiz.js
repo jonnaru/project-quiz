@@ -38,7 +38,7 @@ const questions = [
   {
     id: 5,
     questionText: "Officially, what is the hottest country in the world?",
-    options: ["Ghana", "Saudiarabien", "Pakistan", "Burkina Faso"],
+    options: ["Ghana", "Saudi Arabia", "Pakistan", "Burkina Faso"],
     correctAnswerIndex: 3,
     image: "./assets/sun.svg",
     alt: "sun",
