@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-
+import { SummaryAnswer } from "./SummaryAnswer";
 import { quiz } from "reducers/quiz";
+
+import bookAnimation from "../lotties/book-animation";
+import coolAnimation from "../lotties/cool-animation";
+import beerAnimation from "../lotties/beer-animation";
 
 // Styles components
 
@@ -12,12 +16,6 @@ const SummaryContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-`;
-
-const SummaryParagraph = styled.p`
-  text-align: center;
-  font-size: 36px;
-  width: 80%;
 `;
 
 const SummaryButton = styled.button`
@@ -35,6 +33,7 @@ const SummaryButton = styled.button`
   &:hover {
     background-color: #262626;
     color: #fff;
+  }
 
   &:focus {
     outline: #fff solid 1px;
@@ -50,17 +49,36 @@ export const Summary = () => {
   const numCorrectAnswers = answers.filter((answer) => answer.isCorrect).length;
   const numAnswers = answers.length;
 
-  const getSummeryText = () => {
-    if (numCorrectAnswers === numAnswers) return "You got the highest score 🤩";
-    if (numCorrectAnswers >= numAnswers / 2) {
-      return `You got ${numCorrectAnswers} of ${numAnswers}... that's alright 😁`;
-    }
-    return `You got ${numCorrectAnswers} of ${numAnswers}. Go back to school 🙄`;
+  const getSummeryKey = () => {
+    if (numCorrectAnswers === numAnswers) return "good";
+    if (numCorrectAnswers >= numAnswers / 2) return "medium";
+    return "bad";
+  };
+
+  // storing the result from getSummaryKey() in variable resultKey
+  const resultKey = getSummeryKey();
+
+  const resultInfo = {
+    bad: {
+      text: `You got ${numCorrectAnswers} of ${numAnswers}. Go back to school 🙄`,
+      lottie: bookAnimation,
+    },
+    medium: {
+      text: `You got ${numCorrectAnswers} of ${numAnswers}... that's alright 😁`,
+      lottie: coolAnimation,
+    },
+    good: {
+      text: "You got the highest score 🤩",
+      lottie: beerAnimation,
+    },
   };
 
   return (
     <SummaryContainer>
-      <SummaryParagraph>{getSummeryText()}</SummaryParagraph>
+      <SummaryAnswer
+        lottie={resultInfo[resultKey].lottie}
+        text={resultInfo[resultKey].text}
+      />
       <SummaryButton onClick={() => dispatch(quiz.actions.restart())}>
         Restart
       </SummaryButton>
