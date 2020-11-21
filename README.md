@@ -13,8 +13,6 @@ The project was done with mob-programming using VS Code Live View.
 - Lottie animations
 - Mob Programming
 
-## Screenshot
-
 ![Mockup](mockup.jpg)
 
 ## View it live
