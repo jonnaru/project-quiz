@@ -52,13 +52,28 @@ const TextNumber = styled.p`
 `;
 
 const HeadingContainer = styled.div`
-  height: 200px;
+  height: 250px;
+
+  @media (max-width: 668px) {
+    height: 180px;
+  }
 `;
 const Heading = styled.h1`
   text-align: center;
   margin: 60px auto 30px auto;
   font-size: 40px;
   width: 60%;
+
+  @media (max-width: 1024px) {
+    width: 80%;
+    margin-top: 100px;
+  }
+
+  @media (max-width: 668px) {
+    width: 95%;
+    font-size: 30px;
+    margin-top: 40px;
+  }
 `;
 
 const pulse = keyframes`

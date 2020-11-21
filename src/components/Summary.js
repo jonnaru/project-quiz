@@ -60,15 +60,15 @@ export const Summary = () => {
 
   const resultInfo = {
     bad: {
-      text: `You got ${numCorrectAnswers} of ${numAnswers}. Go back to school 🙄`,
+      text: `You got ${numCorrectAnswers} of ${numAnswers}. Go back to school!`,
       lottie: bookAnimation,
     },
     medium: {
-      text: `You got ${numCorrectAnswers} of ${numAnswers}... that's alright 😁`,
+      text: `You got ${numCorrectAnswers} of ${numAnswers}... that's alright!`,
       lottie: coolAnimation,
     },
     good: {
-      text: "You got the highest score 🤩",
+      text: "You got the highest score!!! 🤩",
       lottie: beerAnimation,
     },
   };

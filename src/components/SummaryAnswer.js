@@ -21,8 +21,8 @@ export const SummaryAnswer = ({ lottie, text }) => {
     <>
       <Lottie
         options={(defaultOptions, { animationData: lottie })}
-        height={400}
-        width={400}
+        height={375}
+        width={375}
       />
       <SummaryParagraph>{text}</SummaryParagraph>
     </>

@@ -11,6 +11,13 @@ const FormContainer = styled.form`
   width: 650px;
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 668px) {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const AnswerContainer = styled.div`
@@ -28,6 +35,10 @@ const OptionsLabel = styled.label`
   border-radius: 50px;
   transition: 0.2s;
   cursor: ${(props) => (props.disabled ? "arrow" : "pointer")};
+
+  @media (max-width: 668px) {
+    width: 300px;
+  }
 
   &:hover {
     background-color: ${(props) =>
