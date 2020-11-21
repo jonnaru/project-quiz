@@ -35,32 +35,20 @@ const OptionsLabel = styled.label`
   border-radius: 50px;
   transition: 0.2s;
   cursor: ${(props) => (props.disabled ? "arrow" : "pointer")};
+  opacity: ${(props) => (props.disabled ? "0.4" : "1")};
+  background: ${(props) =>
+    props.clickedAnswer ? "rgba(255, 0, 0, 1)" : "white"};
+  background: ${(props) => props.correct && "rgba(0, 255, 0, 1)"};
 
   @media (max-width: 668px) {
     width: 300px;
   }
 
   &:hover {
-    background-color: ${(props) =>
-      props.disabled ? "rgba(255, 255, 255, 0.4)" : "#262626"};
-    color: ${(props) => (props.disabled ? "#000" : "#fff")};
+    // change color if not disabled
+    background-color: ${(props) => !props.disabled && "#262626"};
+    color: ${(props) => !props.disabled && "#fff"};
   }
-
-  /* background: ${(props) =>
-    props.disabled ? "rgba(255, 255, 255, 0.4)" : "white"}; */
-
-  background: ${(props) => {
-    if (props.disabled) {
-      return "rgba(255, 255, 255, 0.4)";
-    }
-
-    if (props.correct) {
-      // if correct
-      return "rgba(255, 255, 0, 1)";
-    }
-
-    return "white";
-  }};
 `;
 
 // hiding the radio button
@@ -89,14 +77,18 @@ export const Options = () => {
     return <h1>Oh no! I could not find the current answers!</h1>;
   }
 
+  console.log(question?.correctAnswerIndex);
+  console.log(answer?.isCorrect);
+  console.log(answer?.answerIndex);
+
   return (
     <FormContainer>
       {question.options.map((option, index) => {
         return (
           <AnswerContainer key={index}>
             <Input
-              disabled={answer !== undefined}
-              checked={answer !== undefined && answer.answerIndex === index}
+              disabled={answer} // is true after answer is given
+              checked={answer && answer.answerIndex === index} // is true for answer given
               type="radio"
               name="option"
               id={index}
@@ -110,8 +102,9 @@ export const Options = () => {
               }
             />
             <OptionsLabel
-              disabled={answer !== undefined}
-              correct={answer !== undefined && answer.answerIndex === index}
+              disabled={answer} // is true after answer is given
+              clickedAnswer={answer && answer.answerIndex === index} // is true for clicked answer, after answer is given
+              correct={answer && question.correctAnswerIndex === index} // is true for correct answer, after answer is given
               htmlFor={index}
               // className="options-label"
             >
