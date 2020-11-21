@@ -7,7 +7,8 @@ import { quiz } from "reducers/quiz";
 //  *** Styled components ***
 
 const FormContainer = styled.form`
-  margin: 20px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   width: 650px;
   display: flex;
   justify-content: space-evenly;

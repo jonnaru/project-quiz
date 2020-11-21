@@ -46,16 +46,16 @@ const QuestionButton = styled.button`
 `;
 
 const TextNumber = styled.p`
-  font-size: 20px;
-  margin-top: 30px;
+  font-size: 16px;
+  margin-top: 10px;
   margin-bottom: 0;
 `;
 
 const HeadingContainer = styled.div`
-  height: 250px;
+  height: 200px;
 
   @media (max-width: 668px) {
-    height: 180px;
+    height: 120px;
   }
 `;
 const Heading = styled.h1`
@@ -116,16 +116,13 @@ export const CurrentQuestion = () => {
   if (!question) {
     return <h1>Oh no! I could not find the current question!</h1>;
   }
-  console.log(question.image);
+
   return (
     <QuestionContainer>
       <HeadingContainer>
         <Heading>{question.questionText}</Heading>
       </HeadingContainer>
       <Image src={question.image} alt={question.alt} />
-      <TextNumber>
-        Question {questionNumber} of {questionTotal}
-      </TextNumber>
       <Options />
 
       <QuestionButton
@@ -134,6 +131,9 @@ export const CurrentQuestion = () => {
       >
         {questionNumber === questionTotal ? "Show Summary" : "Next Question"}
       </QuestionButton>
+      <TextNumber>
+        Question {questionNumber} of {questionTotal}
+      </TextNumber>
     </QuestionContainer>
   );
 };
