@@ -1,6 +1,6 @@
-# Redux quiz project
+# Redux quiz project&ensp;|&ensp;[View Live &#10132;](https://hello-countries-quiz.netlify.app/)
 
-An introduction to React Redux as well as a developer team practice. We created a Harry Potter quiz from a pre-defined reducer, a practice in interacting with the Redux store using selectors and dispatching actions.
+An introduction to React Redux as well as a developer team practice. As a smaller group we created a quiz from a pre-defined reducer, a practice in interacting with the Redux store using selectors and dispatching actions.
 
 The project was done with mob-programming using VS Code Live View.
 
@@ -9,8 +9,14 @@ The project was done with mob-programming using VS Code Live View.
 - React
 - React Redux
 - Redux Toolkit
+- Styled components
+- Lottie animations
 - Mob Programming
+
+## Screenshot
+
+![Mockup](mockup.jpg)
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://hello-countries-quiz.netlify.app/
