@@ -55,7 +55,7 @@ const HeadingContainer = styled.div`
   height: 200px;
 
   @media (max-width: 668px) {
-    height: 120px;
+    height: 90px;
   }
 `;
 const Heading = styled.h1`
@@ -71,7 +71,7 @@ const Heading = styled.h1`
   @media (max-width: 668px) {
     width: 95%;
     font-size: 24px;
-    margin-top: 20px;
+    margin: 20px auto 15px auto;
   }
 `;
 
