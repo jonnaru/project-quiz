@@ -18,6 +18,7 @@ const FormContainer = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0;
   }
 `;
 
