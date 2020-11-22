@@ -66,7 +66,6 @@ const Heading = styled.h1`
 
   @media (max-width: 1024px) {
     width: 80%;
-    margin-top: 100px;
   }
 
   @media (max-width: 668px) {
@@ -92,6 +91,7 @@ const Image = styled.img`
   animation-name: ${pulse};
   animation-duration: 10s;
   animation-iteration-count: infinite;
+  height: 250px;
 `;
 
 // *** QurrentQuestion ***
